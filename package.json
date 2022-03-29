@@ -1,0 +1,73 @@
+{
+  "name": "pigeon",
+  "version": "0.0.1",
+  "description": "AWS Synthetics Canary alternative built for minimal cost ",
+  "author": {
+    "name": "Thomas Step",
+    "email": "tstep916@gmail.com"
+  },
+  "repository": "github:thomasstep/pigeon",
+  "license": "Apache-2.0",
+  "bin": {
+    "pigeon": "bin/pigeon.js"
+  },
+  "keywords": [
+    "awscdk",
+    "aws lambda",
+    "serverless"
+  ],
+  "main": "index.js",
+  "files": [
+    "README.md",
+    "index.ts",
+    "cdk.json",
+    ".jsii"
+  ],
+  "scripts": {
+    "build": "jsii",
+    "watch": "jsii --watch",
+    "package": "jsii-pacmak",
+    "release": "jsii-release",
+    "test": "tsc && jest",
+    "cdk": "cdk"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.10",
+    "@types/node": "10.17.27",
+    "aws-cdk": "2.17.0",
+    "aws-cdk-lib": "2.17.0",
+    "constructs": "10.0.0",
+    "jest": "^26.4.2",
+    "jsii": "^1.55.1",
+    "jsii-config": "^1.55.1",
+    "jsii-pacmak": "^1.55.1",
+    "jsii-release": "^0.2.305",
+    "ts-jest": "^26.2.0",
+    "ts-node": "^9.0.0",
+    "typescript": "~3.9.7"
+  },
+  "dependencies": {
+    "aws-cdk-lib": "^2.17.0",
+    "source-map-support": "^0.5.16",
+    "constructs": "^10.0.0"
+  },
+  "bundledDependencies": [
+    "source-map-support"
+  ],
+  "peerDependencies": {
+    "aws-cdk-lib": "^2.17.0",
+    "constructs": "^10.0.0"
+  },
+  "stability": "experimental",
+  "types": "index.d.ts",
+  "jsii": {
+    "outdir": "dist",
+    "versionFormat": "full",
+    "targets": {
+      "python": {
+        "distName": "pigeon.core",
+        "module": "pigeon.core"
+      }
+    }
+  }
+}
