@@ -7,7 +7,7 @@
     ]
   },
   "bin": {
-    "pigeon": "bin/pigeon.js"
+    "cdk-pigeon": "bin/pigeon.js"
   },
   "bundled": {
     "source-map-support": "^0.5.16"
@@ -2950,7 +2950,7 @@
   "docs": {
     "stability": "experimental"
   },
-  "homepage": "https://github.com/thomasstep/pigeon.git",
+  "homepage": "https://github.com/thomasstep/cdk-pigeon.git",
   "jsiiVersion": "1.55.1 (build 07d2d90)",
   "keywords": [
     "awscdk",
@@ -2965,39 +2965,39 @@
       }
     }
   },
-  "name": "pigeon",
+  "name": "cdk-pigeon",
   "readme": {
     "markdown": "# Welcome to your CDK TypeScript project\n\nThis is a blank project for TypeScript development with CDK.\n\nThe `cdk.json` file tells the CDK Toolkit how to execute your app.\n\n## Useful commands\n\n* `npm run build`   compile typescript to js\n* `npm run watch`   watch for changes and compile\n* `npm run test`    perform the jest unit tests\n* `cdk deploy`      deploy this stack to your default AWS account/region\n* `cdk diff`        compare deployed stack with current state\n* `cdk synth`       emits the synthesized CloudFormation template\n"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/thomasstep/pigeon.git"
+    "url": "https://github.com/thomasstep/cdk-pigeon.git"
   },
   "schema": "jsii/0.10.0",
   "targets": {
     "js": {
-      "npm": "pigeon"
+      "npm": "cdk-pigeon"
     },
     "python": {
-      "distName": "pigeon.core",
-      "module": "pigeon.core"
+      "distName": "cdk_pigeon.core",
+      "module": "cdk_pigeon.core"
     }
   },
   "types": {
-    "pigeon.Pigeon": {
-      "assembly": "pigeon",
+    "cdk-pigeon.Pigeon": {
+      "assembly": "cdk-pigeon",
       "base": "constructs.Construct",
       "docs": {
         "stability": "experimental"
       },
-      "fqn": "pigeon.Pigeon",
+      "fqn": "cdk-pigeon.Pigeon",
       "initializer": {
         "docs": {
           "stability": "experimental"
         },
         "locationInModule": {
           "filename": "index.ts",
-          "line": 48
+          "line": 45
         },
         "parameters": [
           {
@@ -3015,7 +3015,7 @@
           {
             "name": "props",
             "type": {
-              "fqn": "pigeon.PigeonProps"
+              "fqn": "cdk-pigeon.PigeonProps"
             }
           }
         ]
@@ -3023,7 +3023,7 @@
       "kind": "class",
       "locationInModule": {
         "filename": "index.ts",
-        "line": 38
+        "line": 33
       },
       "name": "Pigeon",
       "properties": [
@@ -3033,7 +3033,7 @@
           },
           "locationInModule": {
             "filename": "index.ts",
-            "line": 39
+            "line": 34
           },
           "name": "lambdaFunction",
           "type": {
@@ -3046,7 +3046,34 @@
           },
           "locationInModule": {
             "filename": "index.ts",
-            "line": 40
+            "line": 35
+          },
+          "name": "rule",
+          "type": {
+            "fqn": "aws-cdk-lib.aws_events.Rule"
+          }
+        },
+        {
+          "docs": {
+            "stability": "experimental"
+          },
+          "locationInModule": {
+            "filename": "index.ts",
+            "line": 36
+          },
+          "name": "alarm",
+          "optional": true,
+          "type": {
+            "fqn": "aws-cdk-lib.aws_cloudwatch.Alarm"
+          }
+        },
+        {
+          "docs": {
+            "stability": "experimental"
+          },
+          "locationInModule": {
+            "filename": "index.ts",
+            "line": 37
           },
           "name": "topic",
           "optional": true,
@@ -3057,13 +3084,13 @@
       ],
       "symbolId": "index:Pigeon"
     },
-    "pigeon.PigeonProps": {
-      "assembly": "pigeon",
+    "cdk-pigeon.PigeonProps": {
+      "assembly": "cdk-pigeon",
       "datatype": true,
       "docs": {
         "stability": "experimental"
       },
-      "fqn": "pigeon.PigeonProps",
+      "fqn": "cdk-pigeon.PigeonProps",
       "kind": "interface",
       "locationInModule": {
         "filename": "index.ts",
@@ -3127,29 +3154,12 @@
           "immutable": true,
           "locationInModule": {
             "filename": "index.ts",
-            "line": 35
+            "line": 30
           },
           "name": "emailAddress",
           "optional": true,
           "type": {
             "primitive": "string"
-          }
-        },
-        {
-          "abstract": true,
-          "docs": {
-            "stability": "experimental",
-            "summary": "Let the user pass this in because timing and eval periods are highly dependent on the schedule."
-          },
-          "immutable": true,
-          "locationInModule": {
-            "filename": "index.ts",
-            "line": 34
-          },
-          "name": "lambdaMetricProps",
-          "optional": true,
-          "type": {
-            "fqn": "aws-cdk-lib.aws_cloudwatch.MetricProps"
           }
         },
         {
@@ -3175,5 +3185,5 @@
     }
   },
   "version": "0.0.1",
-  "fingerprint": "DnSpYDePWailQ7sH6fSRDMJnd5Ebh2OOiHxJNOmfskI="
+  "fingerprint": "iexjIQX+AXSWhtrXAmDzPhUmVB4VLWrapiN7f//sF6A="
 }

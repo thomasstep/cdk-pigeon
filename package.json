@@ -1,15 +1,15 @@
 {
-  "name": "pigeon",
+  "name": "cdk-pigeon",
   "version": "0.0.1",
   "description": "AWS Synthetics Canary alternative built for minimal cost ",
   "author": {
     "name": "Thomas Step",
     "email": "tstep916@gmail.com"
   },
-  "repository": "github:thomasstep/pigeon",
+  "repository": "github:thomasstep/cdk-pigeon",
   "license": "Apache-2.0",
   "bin": {
-    "pigeon": "bin/pigeon.js"
+    "cdk-pigeon": "bin/pigeon.js"
   },
   "keywords": [
     "awscdk",
@@ -65,8 +65,8 @@
     "versionFormat": "full",
     "targets": {
       "python": {
-        "distName": "pigeon.core",
-        "module": "pigeon.core"
+        "distName": "cdk_pigeon.core",
+        "module": "cdk_pigeon.core"
       }
     }
   }

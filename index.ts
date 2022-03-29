@@ -27,16 +27,13 @@ export interface PigeonProps {
    * Use emailAddress for an actual notification.
    */
   readonly alertOnFailure?: boolean,
-  /**
-   * Let the user pass this in because timing and eval periods
-   * are highly dependent on the schedule.
-   */
-  readonly lambdaMetricProps?: cloudwatch.MetricProps,
   readonly emailAddress?: string,
 }
 
 export class Pigeon extends Construct {
   public lambdaFunction!: lambda.Function;
+  public rule!: events.Rule;
+  public alarm?: cloudwatch.Alarm;
   public topic?: sns.Topic;
 
   /**
@@ -51,24 +48,28 @@ export class Pigeon extends Construct {
     const {
       schedule,
       lambdaFunctionProps,
-      lambdaTargetProps,
+      lambdaTargetProps = {},
       alertOnFailure = false,
-      lambdaMetricProps,
       emailAddress,
     } = props;
 
-    const rule = new events.Rule(this, `${id}-rule`, {
-      schedule,
-    });
     const lambdaFunction = new lambda.Function(
       this,
       `${id}-function`,
-      lambdaFunctionProps,
+      {
+        ...lambdaFunctionProps,
+        // https://github.com/aws/aws-cdk/issues/19608
+        ...lambdaTargetProps,
+      },
     );
     this.lambdaFunction = lambdaFunction;
-    rule.addTarget(
-      new targets.LambdaFunction(lambdaFunction, lambdaTargetProps),
-    );
+    const rule = new events.Rule(this, `${id}-rule`, {
+      schedule,
+      targets: [
+        new targets.LambdaFunction(this.lambdaFunction, lambdaTargetProps),
+      ],
+    });
+    this.rule = rule;
 
     if (alertOnFailure) {
       const alarm = new cloudwatch.Alarm(
@@ -78,15 +79,18 @@ export class Pigeon extends Construct {
           comparisonOperator: cloudwatch.ComparisonOperator.GREATER_THAN_THRESHOLD,
           threshold: 1,
           evaluationPeriods: 1,
-          metric: lambdaFunction.metricErrors(lambdaMetricProps),
+          // Default: sum over 5 minutes
+          metric: lambdaFunction.metricErrors(),
         },
       );
+      this.alarm = alarm;
       const topic = new sns.Topic(this, `${id}-topic`);
+      this.topic = topic;
       alarm.addAlarmAction(new cloudwatchActions.SnsAction(topic));
 
       if (emailAddress) {
         topic.addSubscription(
-          new snsSubscriptions.EmailSubscription(emailAddress),
+          new snsSubscriptions.EmailSubscription(emailAddress, { json: true }),
         );
       }
     }
