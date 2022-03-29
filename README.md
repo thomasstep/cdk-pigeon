@@ -1,14 +1,27 @@
-# Welcome to your CDK TypeScript project
+# Pigeon
 
-This is a blank project for TypeScript development with CDK.
+This is a cheaper version of AWS Synthetics Canary. Head to my [blog post](https://thomasstep.com/blog/why-do-aws-synthetics-canaries-cost-so-much) to read more about the inspiration for this CDK Construct.
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+Pigeon is meant to be dead simple. It creates a Lambda Function that runs on a schedule and optionally alerts an email if the Lambda fails. Everything created is exposed, so if you want to create an alert different than the default, everything is there for you to do it.
 
-## Useful commands
+## Props
 
-* `npm run build`   compile typescript to js
-* `npm run watch`   watch for changes and compile
-* `npm run test`    perform the jest unit tests
-* `cdk deploy`      deploy this stack to your default AWS account/region
-* `cdk diff`        compare deployed stack with current state
-* `cdk synth`       emits the synthesized CloudFormation template
+`schedule: events.Schedule`
+
+`lambdaFunctionProps: lambda.FunctionProps`
+
+`lambdaTargetProps?: targets.LambdaFunctionProps`
+
+`alertOnFailure?: boolean`
+
+`emailAddress?: string`
+
+## Properties
+
+`lambdaFunction!: lambda.Function`
+
+`rule!: events.Rule`
+
+`alarm?: cloudwatch.Alarm`
+
+`topic?: sns.Topic`
