@@ -13,7 +13,7 @@
     "source-map-support": "^0.5.16"
   },
   "dependencies": {
-    "aws-cdk-lib": "^2.17.0",
+    "aws-cdk-lib": "^2.18.0",
     "constructs": "^10.0.0"
   },
   "dependencyClosure": {
@@ -380,6 +380,19 @@
             },
             "python": {
               "module": "aws_cdk.aws_batch"
+            }
+          }
+        },
+        "aws-cdk-lib.aws_billingconductor": {
+          "targets": {
+            "dotnet": {
+              "namespace": "Amazon.CDK.AWS.BillingConductor"
+            },
+            "java": {
+              "package": "software.amazon.awscdk.services.billingconductor"
+            },
+            "python": {
+              "module": "aws_cdk.aws_billingconductor"
             }
           }
         },
@@ -2967,7 +2980,7 @@
   },
   "name": "cdk-pigeon",
   "readme": {
-    "markdown": "# Welcome to your CDK TypeScript project\n\nThis is a blank project for TypeScript development with CDK.\n\nThe `cdk.json` file tells the CDK Toolkit how to execute your app.\n\n## Useful commands\n\n* `npm run build`   compile typescript to js\n* `npm run watch`   watch for changes and compile\n* `npm run test`    perform the jest unit tests\n* `cdk deploy`      deploy this stack to your default AWS account/region\n* `cdk diff`        compare deployed stack with current state\n* `cdk synth`       emits the synthesized CloudFormation template\n"
+    "markdown": "# Pigeon\n\nThis is a cheaper version of AWS Synthetics Canary. Head to my [blog post](https://thomasstep.com/blog/why-do-aws-synthetics-canaries-cost-so-much) to read more about the inspiration for this CDK Construct.\n\nPigeon is meant to be dead simple. It creates a Lambda Function that runs on a schedule and optionally alerts an email if the Lambda fails. Everything created is exposed, so if you want to create an alert different than the default, everything is there for you to do it.\n\n## Props\n\n`schedule: events.Schedule`\n\n`lambdaFunctionProps: lambda.FunctionProps`\n\n`lambdaTargetProps?: targets.LambdaFunctionProps`\n\n`alertOnFailure?: boolean`\n\n`emailAddress?: string`\n\n## Properties\n\n`lambdaFunction!: lambda.Function`\n\n`rule!: events.Rule`\n\n`alarm?: cloudwatch.Alarm`\n\n`topic?: sns.Topic`\n"
   },
   "repository": {
     "type": "git",
@@ -3184,6 +3197,6 @@
       "symbolId": "index:PigeonProps"
     }
   },
-  "version": "0.0.1",
-  "fingerprint": "iexjIQX+AXSWhtrXAmDzPhUmVB4VLWrapiN7f//sF6A="
+  "version": "0.1.0",
+  "fingerprint": "c80kuEmLoNiJVKpu5oKZpgUUj7+mI+3fATyUnjoWFq0="
 }

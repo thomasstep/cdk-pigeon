@@ -1,6 +1,6 @@
 {
   "name": "cdk-pigeon",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "AWS Synthetics Canary alternative built for minimal cost ",
   "author": {
     "name": "Thomas Step",
@@ -35,7 +35,7 @@
     "@types/jest": "^26.0.10",
     "@types/node": "10.17.27",
     "aws-cdk": "2.17.0",
-    "aws-cdk-lib": "2.17.0",
+    "aws-cdk-lib": "2.18.0",
     "constructs": "10.0.0",
     "jest": "^26.4.2",
     "jsii": "^1.55.1",
@@ -47,15 +47,15 @@
     "typescript": "~3.9.7"
   },
   "dependencies": {
-    "aws-cdk-lib": "^2.17.0",
+    "constructs": "^10.0.0",
     "source-map-support": "^0.5.16",
-    "constructs": "^10.0.0"
+    "aws-cdk-lib": "^2.18.0"
   },
   "bundledDependencies": [
     "source-map-support"
   ],
   "peerDependencies": {
-    "aws-cdk-lib": "^2.17.0",
+    "aws-cdk-lib": "^2.18.0",
     "constructs": "^10.0.0"
   },
   "stability": "experimental",
